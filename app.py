@@ -111,6 +111,7 @@ def admin():
                  "revenue": db.execute("SELECT COALESCE(SUM(total_amount),0) FROM bookings WHERE booking_status!='Cancelled'").fetchone()[0]}
     return render_template("admin.html", vehicles=vehicles, bookings=bookings, stats=stats)
 
+init_db()
+
 if __name__ == "__main__":
-    init_db()
     app.run(debug=True)
